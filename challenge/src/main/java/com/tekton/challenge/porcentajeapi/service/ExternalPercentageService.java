@@ -11,8 +11,6 @@ import org.springframework.stereotype.Service;
 import com.tekton.challenge.porcentajeapi.excepcion.PercentageUnavailableException;
 
 import lombok.RequiredArgsConstructor;
-
-// service/ExternalPercentageService.java
 @Service
 @RequiredArgsConstructor
 public class ExternalPercentageService {
