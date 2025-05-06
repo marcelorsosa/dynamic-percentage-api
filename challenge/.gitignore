@@ -31,3 +31,23 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+*.env
+.env
+*.local
+docker-compose.override.yml
+
+# Swagger or Postman generated files
+swagger-ui/
