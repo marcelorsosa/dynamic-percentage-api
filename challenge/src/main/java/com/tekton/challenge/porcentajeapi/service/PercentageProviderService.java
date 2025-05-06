@@ -16,7 +16,7 @@ public class PercentageProviderService {
 
     public double getPercentage() {
         Double cached = percentageCache.getIfPresent("percentage");
-        if (cached != null) return cached;
+        // No need to check cached again here as it was already checked earlier
 
         try {
             double value = callExternalService();
