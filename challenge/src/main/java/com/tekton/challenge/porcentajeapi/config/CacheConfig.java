@@ -1,4 +1,4 @@
-package com.tekton.challenge.porcentajeapi;
+package com.tekton.challenge.porcentajeapi.config;
 
 import java.util.concurrent.TimeUnit;
 

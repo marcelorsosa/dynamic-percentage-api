@@ -1,1 +1,3 @@
 docker run --name postgres-spring -e POSTGRES_USER=user -e POSTGRES_PASSWORD=password -e POSTGRES_DB=apidb -p 5432:5432 -d postgres:latest
+
+docker exec -it postgres-spring psql -U user -d apidb

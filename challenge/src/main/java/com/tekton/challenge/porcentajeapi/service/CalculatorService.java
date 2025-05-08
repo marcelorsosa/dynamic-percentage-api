@@ -1,4 +1,4 @@
-    package com.tekton.challenge.porcentajeapi.service;
+package com.tekton.challenge.porcentajeapi.service;
 
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -37,6 +37,11 @@ public class CalculatorService {
 
         double sum = num1 + num2;
         return sum + (sum * (percentage != null ? percentage : 0.0));
+    }
+
+    @SuppressWarnings("null")
+    public void clearAllCache(String cacheName) {
+        cacheManager.getCache(cacheName).clear();
     }
 }
 

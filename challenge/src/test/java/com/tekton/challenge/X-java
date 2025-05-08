@@ -1,0 +1,62 @@
+package com.tekton.challenge;
+
+import java.util.Optional;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.CacheManager;
+
+import com.tekton.challenge.porcentajeapi.service.CalculatorService;
+import com.tekton.challenge.porcentajeapi.service.ExternalPercentageService;
+
+@ExtendWith(MockitoExtension.class)
+class PercentageServiceTest {
+
+    @Mock
+    private ExternalPercentageService externalPercentageService;
+    @Mock
+    private CalculatorService percentageService;
+    @Mock
+    private CacheManager cacheManager;  
+
+    @BeforeEach
+    void setup() {
+        percentageService = new CalculatorService(externalPercentageService,
+        cacheManager);
+    }
+
+    @Test
+    void shouldReturnPercentageFromExternalService() {
+        when(Optional.of(  externalPercentageService.getPercentage())
+        ).thenReturn(Optional.of( 10.0));
+
+        double percentage = percentageService.getPercentage();
+
+        assertEquals(10.0, percentage);
+        verify(externalPercentageService).getPercentage();
+    }
+
+    @Test
+    void shouldReturnCachedPercentageIfExternalFails() {
+        when(externalPercentageService.getPercentage()).thenReturn(20.0);
+        percentageService.getPercentage(); // sets the cache
+
+        // simulate failure
+        when(externalPercentageService.getPercentage()).thenThrow(new RuntimeException("fail"));
+
+        double percentage = percentageService.getPercentage();
+
+        assertEquals(20.0, percentage); // uses cached
+    }
+
+    @Test
+    void shouldThrowExceptionIfNoCachedPercentage() {
+        when(externalPercentageService.getPercentage()).thenThrow(new RuntimeException("fail"));
+
+        assertThrows(RuntimeException.class, () -> percentageService.getPercentage());
+    }
+}

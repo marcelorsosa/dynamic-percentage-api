@@ -9,14 +9,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import com.tekton.challenge.porcentajeapi.service.CalculatorService;
-import com.tekton.challenge.porcentajeapi.service.PercentageProviderService;
+import com.tekton.challenge.porcentajeapi.service.ExternalPercentageService;
 
 
 @SpringBootTest
 class CalculationServiceTest {
 
     @MockBean
-    private PercentageProviderService percentageService;
+    private ExternalPercentageService percentageService;
 
     @Autowired
     private CalculatorService calculationService;
