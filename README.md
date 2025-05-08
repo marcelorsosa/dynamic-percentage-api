@@ -22,8 +22,8 @@ Una API REST en Spring Boot (Java 21) que realiza cálculos con un porcentaje di
 
 | Método | URL                         | Descripción                            |
 |--------|-----------------------------|----------------------------------------|
-| POST   | `/api/calculate`            | Calcula con porcentaje dinámico        |
-| GET    | `/api/history?page=0&size=5`| Devuelve historial de llamadas         |
+| GET    | `/api/calculate`            | Calcula con porcentaje dinámico        |
+| GET    | `/api/logs?page=0&size=5`   | Devuelve historial de llamadas         |
 
 ---
 
@@ -52,3 +52,7 @@ cd dynamic-percentage-api
 cd challenge
 
 docker-compose up --build
+
+Documentación Swagger
+Una vez levantado el proyecto, accedé a:
+👉 http://localhost:8080/swagger-ui.html
