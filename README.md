@@ -49,5 +49,6 @@ Una API REST en Spring Boot (Java 21) que realiza cálculos con un porcentaje di
 ```bash
 git clone https://github.com/marcelorsosa/dynamic-percentage-api.git
 cd dynamic-percentage-api
+cd challenge
 
-./mvnw clean package -DskipTests
+docker-compose up --build

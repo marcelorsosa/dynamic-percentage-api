@@ -4,7 +4,7 @@ spring:
   cache:
     type: caffeine
   datasource:
-    url: jdbc:postgresql://localhost:5432/apidb
+    url: jdbc:postgresql://postgres-db:5432/apidb
     username: user
     password: password
     driver-class-name: org.postgresql.Driver
